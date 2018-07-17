@@ -69,7 +69,6 @@
 
     cpu_set_t* __sched_cpualloc(size_t count);
     void __sched_cpufree(cpu_set_t* set);
-    int sched_getaffinity(pid_t pid, size_t cpusetsize, cpu_set_t *mask);
 
     typedef long int __cpu_mask;
     # define __NCPUBITS	(8 * sizeof (__cpu_mask))

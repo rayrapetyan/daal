@@ -85,14 +85,13 @@
     #ifdef __FreeBSD__
         #include <pthread_np.h>
 
+        extern int sched_getaffinity(pid_t pid, size_t cpusetsize, cpu_set_t *mask);
+
         cpu_set_t* __sched_cpualloc(size_t count) {
             return (cpu_set_t*) malloc(CPU_ALLOC_SIZE(count));
         }
         void __sched_cpufree(cpu_set_t* set) {
             free(set);
-        }
-        int sched_getaffinity(pid_t pid, size_t cpusetsize, cpu_set_t *mask) {
-            return cpuset_getaffinity(CPU_LEVEL_WHICH, CPU_WHICH_PID, pid == 0 ? -1 : pid, cpusetsize, mask);
         }
     #endif
 

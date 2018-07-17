@@ -526,9 +526,9 @@ else
     else
         ifdef OS_is_fbsd
             ifdef PLAT_is_fbsd32e
-                $(WORKDIR.lib)/$(thr_tbb_y): LOPT += $(addprefix -u ,$(shell grep -v -E '^(EXPORTS|;)' $(THR.srcdir)/export_fbsd32e.def))
+                $(WORKDIR.lib)/$(thr_tbb_y): LOPT += $(addprefix -Wl$(comma)-u -Wl$(comma) ,$(shell grep -v -E '^(EXPORTS|;)' $(THR.srcdir)/export_fbsd32e.def))
             else
-                $(WORKDIR.lib)/$(thr_tbb_y): LOPT += $(addprefix -u ,$(shell grep -v -E '^(EXPORTS|;)' $(THR.srcdir)/export.def))
+                $(WORKDIR.lib)/$(thr_tbb_y): LOPT += $(addprefix -Wl$(comma)-u -Wl$(comma) ,$(shell grep -v -E '^(EXPORTS|;)' $(THR.srcdir)/export.def))
             endif
         else
             $(WORKDIR.lib)/$(thr_tbb_y): LOPT += $(addprefix -u ,$(shell grep -v -E '^(EXPORTS|;)' $(THR.srcdir)/export_mac.def))
@@ -556,9 +556,9 @@ else
     else
         ifdef OS_is_fbsd
             ifdef PLAT_is_fbsd32e
-                $(WORKDIR.lib)/$(thr_seq_y): LOPT += $(addprefix -u ,$(shell grep -v -E '^(EXPORTS|;)' $(THR.srcdir)/export_fbsd32e.def))
+                $(WORKDIR.lib)/$(thr_seq_y): LOPT += $(addprefix -Wl$(comma)-u -Wl$(comma) ,$(shell grep -v -E '^(EXPORTS|;)' $(THR.srcdir)/export_fbsd32e.def))
             else
-                $(WORKDIR.lib)/$(thr_seq_y): LOPT += $(addprefix -u ,$(shell grep -v -E '^(EXPORTS|;)' $(THR.srcdir)/export.def))
+                $(WORKDIR.lib)/$(thr_seq_y): LOPT += $(addprefix -Wl$(comma)-u -Wl$(comma) ,$(shell grep -v -E '^(EXPORTS|;)' $(THR.srcdir)/export.def))
             endif
         else
             $(WORKDIR.lib)/$(thr_seq_y): LOPT += $(addprefix -u ,$(shell grep -v -E '^(EXPORTS|;)' $(THR.srcdir)/export_mac.def))

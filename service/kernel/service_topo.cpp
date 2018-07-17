@@ -54,6 +54,11 @@
 #include "service_topo.h"
 
 #ifdef __FreeBSD__
+    #undef stdout
+    #undef stderr
+    FILE *stdout=__stdoutp;
+    FILE *stderr=__stderrp;
+
     int sched_setaffinity(pid_t pid, size_t cpusetsize, cpu_set_t *mask) {
         return cpuset_setaffinity(CPU_LEVEL_WHICH, CPU_WHICH_PID, pid == 0 ? -1 : pid, cpusetsize, mask);
     }
